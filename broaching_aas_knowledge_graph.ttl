@@ -1,0 +1,372 @@
+@prefix agg: <http://jena.apache.org/ARQ/function/aggregate#> .
+@prefix sail: <http://www.openrdf.org/config/sail#> .
+@prefix aas-id: <https://admin-shell.io/aas/3/1/Identifiable/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix geof: <http://www.opengis.net/def/function/geosparql/> .
+@prefix aas-sm: <https://admin-shell.io/aas/3/1/Submodel/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix path: <http://www.ontotext.com/path#> .
+@prefix aas: <https://admin-shell.io/aas/3/1/> .
+@prefix array: <http://www.w3.org/2005/xpath-functions/array> .
+@prefix apf: <http://jena.apache.org/ARQ/property#> .
+@prefix rep: <http://www.openrdf.org/config/repository#> .
+@prefix map: <http://www.w3.org/2005/xpath-functions/map> .
+@prefix aas-env: <https://admin-shell.io/aas/3/1/Environment/> .
+@prefix broch: <urn:cfaa:brochadora:001:> .
+@prefix sr: <http://www.openrdf.org/config/repository/sail#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix aas-smc: <https://admin-shell.io/aas/3/1/SubmodelElementCollection/> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix aas-prop: <https://admin-shell.io/aas/3/1/Property/> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix list: <http://jena.apache.org/ARQ/list#> .
+@prefix aas-ai: <https://admin-shell.io/aas/3/1/AssetInformation/> .
+@prefix aas-aas: <https://admin-shell.io/aas/3/1/AssetAdministrationShell/> .
+@prefix aas-ref: <https://admin-shell.io/aas/3/1/Referable/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ofn: <http://www.ontotext.com/sparql/functions/> .
+@prefix geoext: <http://rdf.useekm.com/ext#> .
+@prefix graphdb: <http://www.ontotext.com/config/graphdb#> .
+@prefix math: <http://www.w3.org/2005/xpath-functions/math> .
+@prefix omgeo: <http://www.ontotext.com/owlim/geo#> .
+
+broch:environment a aas:Environment;
+  aas-env:assetAdministrationShells broch:aas;
+  aas-env:submodels broch:sm_nameplate, broch:sm_technicalData, broch:sm_physicalStructure,
+    broch:sm_dimensions, broch:sm_commissioning .
+
+broch:aas a aas:AssetAdministrationShell;
+  aas-id:id "urn:cfaa:brochadora:001";
+  aas-aas:assetInformation broch:assetInfo;
+  aas-aas:submodels broch:sm_nameplate, broch:sm_technicalData, broch:sm_physicalStructure,
+    broch:sm_dimensions, broch:sm_commissioning .
+
+broch:sm_nameplate a aas:Submodel;
+  aas-id:id "urn:cfaa:brochadora:001:sm:Nameplate";
+  aas-ref:idShort "Nameplate";
+  aas-sm:submodelElements broch:prop_manufacturer, broch:prop_model .
+
+broch:sm_technicalData a aas:Submodel;
+  aas-id:id "urn:cfaa:brochadora:001:sm:TechnicalData";
+  aas-ref:idShort "TechnicalData";
+  aas-sm:submodelElements broch:prop_workpieceMaterial, broch:prop_supplyVoltage, broch:prop_totalInstalledPower,
+    broch:prop_maxWorkingForce, broch:prop_maxCuttingSpeed, broch:prop_maxReturnSpeed,
+    broch:prop_maxStroke, broch:prop_panelWidth, broch:prop_numberOfBroachingStations,
+    broch:prop_maxBroachLength, broch:prop_compressedAirPressure, broch:prop_totalHeight,
+    broch:prop_floorSpaceRequired, broch:prop_totalWeight, broch:prop_requiredFloorLoadCapacity,
+    broch:prop_coolantTankCapacity, broch:prop_coolantType, broch:prop_lubricationOilType,
+    broch:prop_greaseType, broch:prop_hydraulicOilType, broch:prop_soundPressureLevel .
+
+broch:sm_physicalStructure a aas:Submodel;
+  aas-id:id "urn:cfaa:brochadora:001:sm:PhysicalStructure";
+  aas-ref:idShort "PhysicalStructure";
+  aas-sm:submodelElements broch:coll_zocalo, broch:coll_columna, broch:coll_carroPortaPiezas,
+    broch:coll_platoDivisor, broch:coll_carroPortaBrochas .
+
+broch:assetInfo a aas:AssetInformation;
+  aas-ai:globalAssetId "urn:cfaa:brochadora:001";
+  aas-ai:assetKind <https://admin-shell.io/aas/3/1/AssetKind/Instance> .
+
+broch:prop_manufacturer a aas:Property;
+  aas-ref:idShort "Manufacturer";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "EKIN S. Coop" .
+
+broch:prop_model a aas:Property;
+  aas-ref:idShort "ManufacturerProductDesignation";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "A218/ RASHEM 7x3000x500" .
+
+broch:prop_workpieceMaterial a aas:Property;
+  aas-ref:idShort "WorkpieceMaterial";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Inconel" .
+
+broch:prop_supplyVoltage a aas:Property;
+  aas-ref:idShort "SupplyVoltage";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "3x380 VAC - 50Hz" .
+
+broch:prop_totalInstalledPower a aas:Property;
+  aas-ref:idShort "TotalInstalledPower";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "57 kW" .
+
+broch:prop_maxWorkingForce a aas:Property;
+  aas-ref:idShort "MaxWorkingForce";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "70 kN" .
+
+broch:prop_maxCuttingSpeed a aas:Property;
+  aas-ref:idShort "MaxCuttingSpeed";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "40 m/min" .
+
+broch:prop_maxReturnSpeed a aas:Property;
+  aas-ref:idShort "MaxReturnSpeed";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "40 m/min" .
+
+broch:prop_maxStroke a aas:Property;
+  aas-ref:idShort "MaxStroke";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "3000 mm" .
+
+broch:prop_panelWidth a aas:Property;
+  aas-ref:idShort "PanelWidth";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "330 mm" .
+
+broch:prop_numberOfBroachingStations a aas:Property;
+  aas-ref:idShort "NumberOfBroachingStations";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "1" .
+
+broch:prop_maxBroachLength a aas:Property;
+  aas-ref:idShort "MaxBroachLength";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "2640 mm" .
+
+broch:prop_compressedAirPressure a aas:Property;
+  aas-ref:idShort "CompressedAirPressure";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "6 bar" .
+
+broch:prop_totalHeight a aas:Property;
+  aas-ref:idShort "TotalHeight";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "5850 mm" .
+
+broch:prop_floorSpaceRequired a aas:Property;
+  aas-ref:idShort "FloorSpaceRequired";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "4000 x 5000 mm" .
+
+broch:prop_totalWeight a aas:Property;
+  aas-ref:idShort "TotalWeight";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "25 Tn" .
+
+broch:prop_requiredFloorLoadCapacity a aas:Property;
+  aas-ref:idShort "RequiredFloorLoadCapacity";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "7 Tn/m^2" .
+
+broch:prop_coolantTankCapacity a aas:Property;
+  aas-ref:idShort "CoolantTankCapacity";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "2000 L" .
+
+broch:prop_coolantType a aas:Property;
+  aas-ref:idShort "CoolantType";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "CUT-MAX S 50259-1 (14cSt - 40ºC)" .
+
+broch:prop_lubricationOilType a aas:Property;
+  aas-ref:idShort "LubricationOilType";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "ISO 3498 G220 (220cSt - 40ºC)" .
+
+broch:prop_greaseType a aas:Property;
+  aas-ref:idShort "GreaseType";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Alpha G11 NLGI 0-1 (149cSt - 40ºC)" .
+
+broch:prop_hydraulicOilType a aas:Property;
+  aas-ref:idShort "HydraulicOilType";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "ISO 3498 HM46 (46cSt - 40º)" .
+
+broch:prop_soundPressureLevel a aas:Property;
+  aas-ref:idShort "SoundPressureLevel";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "<78 dB" .
+
+broch:coll_zocalo a aas:SubmodelElementCollection;
+  aas-ref:idShort "Zocalo";
+  aas-smc:value broch:prop_zocalo_descripcion .
+
+broch:coll_columna a aas:SubmodelElementCollection;
+  aas-ref:idShort "Columna";
+  aas-smc:value broch:prop_columna_descripcion .
+
+broch:coll_carroPortaPiezas a aas:SubmodelElementCollection;
+  aas-ref:idShort "CarroPortaPiezas";
+  aas-smc:value broch:prop_carroPortaPiezas_descripcion, broch:coll_carroPortaPiezas_frenos .
+
+broch:coll_platoDivisor a aas:SubmodelElementCollection;
+  aas-ref:idShort "PlatoDivisor";
+  aas-smc:value broch:prop_platoDivisor_descripcion, broch:prop_platoDivisor_bases,
+    broch:coll_platoDivisor_mecanismo, broch:coll_platoDivisor_senales .
+
+broch:coll_carroPortaBrochas a aas:SubmodelElementCollection;
+  aas-ref:idShort "CarroPortaBrochas";
+  aas-smc:value broch:prop_carroPortaBrochas_descripcion .
+
+broch:prop_zocalo_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "El zócalo es la base de la máquina sobre el que se monta la columna. A su vez, hace de depósito de refrigerante, donde se va acumulando el aceite y la viruta durante el proceso de brochado y desde el que se envía al extractor de virutas para separar el aceite de la viruta." .
+
+broch:prop_columna_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Sobre el zócalo se monta la columna con dos guías lineales por las que se desplaza el carro porta-piezas, siendo el recorrido máximo de 3000 mm. La posición del carro se controla a través de dos reglas lineales colocadas en el lateral de la columna. Dispone de juegos de sistemas piñón/cremallera (WITTENSTEIN) accionados por dos servomotores colocados sobre el carro porta-piezas que provocan su movimiento. El movimiento se realiza a una velocidad máxima de 40 m/min de avance y 40 m/min de retroceso. La fuerza máxima desarrollada en este movimiento es de 70 kN." .
+
+broch:prop_carroPortaPiezas_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "El carro porta-piezas lleva seis patines y dos bloqueos hidráulicos en la parte posterior. Para equilibrar el peso del carro, hay colocadas dos guías en la parte trasera de la columna por las que se desplazan dos contrapesos. Cada uno lleva instalados dos patines y un bloqueo hidráulico." .
+
+broch:coll_carroPortaPiezas_frenos a aas:SubmodelElementCollection;
+  aas-ref:idShort "Frenos";
+  aas-smc:value broch:coll_freno_BQ715, broch:coll_freno_BQ717, broch:coll_freno_BQ720,
+    broch:coll_freno_BQ721, broch:coll_freno_BQ723, broch:coll_freno_BQ724 .
+
+broch:coll_freno_BQ715 a aas:SubmodelElementCollection;
+  aas-ref:idShort "BQ715";
+  aas-smc:value broch:prop_freno_BQ715_modelo, broch:prop_freno_BQ715_ubicacion .
+
+broch:coll_freno_BQ717 a aas:SubmodelElementCollection;
+  aas-ref:idShort "BQ717";
+  aas-smc:value broch:prop_freno_BQ717_modelo, broch:prop_freno_BQ717_ubicacion .
+
+broch:coll_freno_BQ720 a aas:SubmodelElementCollection;
+  aas-ref:idShort "BQ720";
+  aas-smc:value broch:prop_freno_BQ720_modelo, broch:prop_freno_BQ720_ubicacion .
+
+broch:coll_freno_BQ721 a aas:SubmodelElementCollection;
+  aas-ref:idShort "BQ721";
+  aas-smc:value broch:prop_freno_BQ721_modelo, broch:prop_freno_BQ721_ubicacion .
+
+broch:coll_freno_BQ723 a aas:SubmodelElementCollection;
+  aas-ref:idShort "BQ723";
+  aas-smc:value broch:prop_freno_BQ723_modelo, broch:prop_freno_BQ723_ubicacion .
+
+broch:coll_freno_BQ724 a aas:SubmodelElementCollection;
+  aas-ref:idShort "BQ724";
+  aas-smc:value broch:prop_freno_BQ724_modelo, broch:prop_freno_BQ724_ubicacion .
+
+broch:prop_freno_BQ715_modelo a aas:Property;
+  aas-ref:idShort "Modelo";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "FRENO MAYR" .
+
+broch:prop_freno_BQ715_ubicacion a aas:Property;
+  aas-ref:idShort "Ubicacion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Lado frontal izquierda 1" .
+
+broch:prop_freno_BQ717_modelo a aas:Property;
+  aas-ref:idShort "Modelo";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "FRENO MAYR" .
+
+broch:prop_freno_BQ717_ubicacion a aas:Property;
+  aas-ref:idShort "Ubicacion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Lado compensación izquierda 1" .
+
+broch:prop_freno_BQ720_modelo a aas:Property;
+  aas-ref:idShort "Modelo";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "FRENO MAYR" .
+
+broch:prop_freno_BQ720_ubicacion a aas:Property;
+  aas-ref:idShort "Ubicacion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Lado compensación izquierda 2" .
+
+broch:prop_freno_BQ721_modelo a aas:Property;
+  aas-ref:idShort "Modelo";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "FRENO MAYR" .
+
+broch:prop_freno_BQ721_ubicacion a aas:Property;
+  aas-ref:idShort "Ubicacion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Lado frontal derecha 1" .
+
+broch:prop_freno_BQ723_modelo a aas:Property;
+  aas-ref:idShort "Modelo";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "FRENO MAYR" .
+
+broch:prop_freno_BQ723_ubicacion a aas:Property;
+  aas-ref:idShort "Ubicacion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Lado compensación derecha 1" .
+
+broch:prop_freno_BQ724_modelo a aas:Property;
+  aas-ref:idShort "Modelo";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "FRENO MAYR" .
+
+broch:prop_freno_BQ724_ubicacion a aas:Property;
+  aas-ref:idShort "Ubicacion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Lado compensación derecha 2" .
+
+broch:prop_platoDivisor_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "El plato divisor va colocado sobre el carro porta-piezas y dispone de un dentado Hirth con capacidad para hacer divisiones de 1º. Con ello se pueden obtener todos los ángulos múltiplos de 1º, permitiendo la programación y realización de una sucesión de ángulos iguales o desiguales. Sobre el plato divisor se amarra con tornillos el disco Iconel a brochar." .
+
+broch:prop_platoDivisor_bases a aas:Property;
+  aas-ref:idShort "Bases";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Dispone de dos bases: una plana para brochar a 0º y otra inclinada para brochar a 15º." .
+
+broch:coll_platoDivisor_mecanismo a aas:SubmodelElementCollection;
+  aas-ref:idShort "Mecanismo";
+  aas-smc:value broch:prop_platoDivisor_mec_cilindro, broch:prop_platoDivisor_mec_servomotor .
+
+broch:coll_platoDivisor_senales a aas:SubmodelElementCollection;
+  aas-ref:idShort "Senales";
+  aas-smc:value broch:coll_senal_SQ46, broch:coll_senal_SQ47 .
+
+broch:prop_platoDivisor_mec_cilindro a aas:Property;
+  aas-ref:idShort "CilindroHidraulico";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Permite que el engranaje superior del dentado HIRTH se mueva verticalmente, liberando los dientes del engranaje inferior. De esta manera se desbloquea el dentado HIRTH y el plato divisor queda listo para girar." .
+
+broch:prop_platoDivisor_mec_servomotor a aas:Property;
+  aas-ref:idShort "Servomotor";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Gira el plato una vez que el dentado HIRTH está liberado." .
+
+broch:coll_senal_SQ46 a aas:SubmodelElementCollection;
+  aas-ref:idShort "SQ46";
+  aas-smc:value broch:prop_SQ46_descripcion, broch:prop_SQ46_estado .
+
+broch:coll_senal_SQ47 a aas:SubmodelElementCollection;
+  aas-ref:idShort "SQ47";
+  aas-smc:value broch:prop_SQ47_descripcion, broch:prop_SQ47_estado .
+
+broch:prop_SQ46_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Mesa abajo (bloqueado)" .
+
+broch:prop_SQ46_estado a aas:Property;
+  aas-ref:idShort "Estado";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "PENDIENTE_TIEMPO_REAL" .
+
+broch:prop_SQ47_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Mesa arriba (desbloqueado)" .
+
+broch:prop_SQ47_estado a aas:Property;
+  aas-ref:idShort "Estado";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "PENDIENTE_TIEMPO_REAL" .
+
+broch:prop_carroPortaBrochas_descripcion a aas:Property;
+  aas-ref:idShort "Descripcion";
+  aas-prop:valueType <https://admin-shell.io/aas/3/1/DataTypeDefXsd/String>;
+  aas-prop:value "Sobre el carro porta-brochas van amarradas las herramientas y está fijado a la columna. Permanece quieto durante el proceso de mecanizado, ya que el desplazamiento lo realiza el carro porta-piezas." .
