@@ -1,0 +1,7 @@
+chainlit==2.11.1
+langchain==0.3.30
+langchain-community==0.3.24
+langchain-ollama==0.3.10
+python-dotenv==1.2.4
+rdflib==7.6.0
+SPARQLWrapper==2.0.0
