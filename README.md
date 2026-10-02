@@ -1,14 +1,15 @@
 # CIRP-CMS-2027-KG-RAG
 
-This repository contains a Chainlit-based question-answering system connected to a GraphDB knowledge graph of a broaching machine.
+This repository contains a question-answering system connected to a Knowledge Graph representing a broaching machine.
 
 The application uses:
-- **GraphDB** as RDF knowledge graph storage.
-- **LangChain** for graph-based question answering.
-- **Ollama** for local large language model inference.
-- **Chainlit** for the conversational interface.
+- [GraphDB](https://graphdb.ontotext.com) as a triple store.
+- [LangChain](https://www.langchain.com) for graph-based question answering.
+- [Ollama](https://ollama.com) for local large language model inference.
+- [Chainlit](https://docs.chainlit.io/get-started/overview) for the conversational interface.
 
 ## Repository structure
+
 ```
 .
 ├── code/
@@ -22,16 +23,22 @@ The application uses:
 ```
 
 ## Deployment
+
 1. Clone the repository.
 2. Create and activate a Python virtual environment.
+```
+python3 -m venv .venv
+source .venv/bin/activate
+
+```
 3. Install the required dependencies:
 ```
 pip install -r code/requirements.txt
 ```
-4. Set up **GraphDB**: 
-    - Create a new repository 
-    - Import the RDF graph file graph/broaching\_aas\_knowledge\_graph.ttl.
-5. Set up **Ollama** and download the required model. The current configuration uses:
+4. Set up GraphDB and configure it: 
+    - Create a new repository called `aas-rdf`
+    - Import the RDF graph file `broaching_aas_knowledge_graph.ttl` to the Named Graph `urn:cfaa:brochadora:001:graph`.
+5. Set up Ollama and download the required model. The current configuration uses:
 ```
 ollama pull qwen2.5:32b
 ```
