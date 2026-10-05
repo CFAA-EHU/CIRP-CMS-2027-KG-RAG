@@ -22,6 +22,14 @@ The application uses:
 └── README.md
 ```
 
+## Hardware requirements
+
+The application currently uses the model `qwen2.5:32b`.
+
+The model occupies approximately 20 GB, and additional RAM/VRAM is required for inference.
+
+A system with sufficient GPU VRAM and/or system RAM is therefore required. 
+
 ## Deployment
 
 1. Clone the repository.
