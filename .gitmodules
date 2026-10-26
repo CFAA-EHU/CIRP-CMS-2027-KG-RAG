@@ -1,0 +1,3 @@
+[submodule "RAMON-Retrieval-Advanced-Manufacturing-Ontology"]
+	path = RAMON-Retrieval-Advanced-Manufacturing-Ontology
+	url = git@github.com:CFAA-EHU/RAMON-Retrieval-Advanced-Manufacturing-Ontology.git
