@@ -1,0 +1,26 @@
+Categoria;Pregunta
+GraphDB;How many servomotors does the broaching machine have?
+GraphDB;Which components belong to the workpiece carrier?
+GraphDB;Which servomotors belong to the workpiece carrier?
+GraphDB;Which components belong to the hydraulic system?
+GraphDB;Which assembly contains the left servomotor?
+GraphDB;Which measured properties are associated with the right servomotor?
+GraphDB;Which units are assigned to the measured properties of the left servomotor?
+GraphDB;Which InfluxDB fields are mapped to the measured properties of the workpiece carrier?
+GraphDB;Which unit is used for position measurements of the workpiece carrier?
+GraphDB;Which component of the broaching machine has a position measurement expressed in degrees, and which InfluxDB field is associated with it?
+InfluxDB;What was the mean torque of the left servomotor on 27 March 2026?
+InfluxDB;What was the maximum torque of the right servomotor on 9 October 2025?
+InfluxDB;What was the minimum current of the left servomotor on 27 March 2026?
+InfluxDB;What was the mean current of the right servomotor on 15 January 2026?
+InfluxDB;What is the maximum registered power of the left servomotor?
+InfluxDB;What was the last recorded power value of the right servomotor on 27 March 2026?
+InfluxDB;What was the mean rotation speed of the left servomotor on the tests that happened in March 2026?
+InfluxDB;How many non-null torque samples were recorded for the left servomotor on 27 March 2026?
+InfluxDB;Compare the mean current of the left and right servomotors on 27 March 2026.
+InfluxDB;How did the torque of the left and right servomotors evolve between 1 March and 30 May 2026?
+Combinadas;How did the torque of the servomotors belonging to the workpiece carrier change between 1 April and 30 April 2026, and which motor reached the highest torque?
+Combinadas;Between 1 March and 30 May 2026, how close did each servomotor come to its maximum permitted torque, and when was the smallest margin recorded?
+Combinadas;Which servomotor belonging to the workpiece carrier showed the largest increase in mean current from March to April 2026?
+Combinadas;At the time when the left servomotor of the workpiece carrier reached its highest recorded torque on 27 March 2026, what was the position of the workpiece carrier, and in which unit is that position measured?
+Combinadas;Which servomotor belonging to the workpiece carrier had the highest mean power consumption during April 2026, and what is its identifier and the measurement unit?
