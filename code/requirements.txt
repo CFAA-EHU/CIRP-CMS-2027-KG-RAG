@@ -1,7 +1,23 @@
-chainlit==2.11.1
-langchain==0.3.30
-langchain-community==0.3.24
-langchain-ollama==0.3.10
-python-dotenv==1.2.4
+# User interface
+chainlit==2.12.0
+
+# LLM integration
+langchain-core==1.7.6
+langchain-ollama==1.1.0
+ollama==0.6.3
+
+# Database integration
+influxdb-client==1.50.0
 rdflib==7.6.0
-SPARQLWrapper==2.0.0
+
+# HTTP communication
+requests==2.34.2
+
+# Configuration
+python-dotenv==1.2.4
+
+# Data validation
+pydantic==2.14.1
+
+# SPARQL parsing
+pyparsing==3.3.3
